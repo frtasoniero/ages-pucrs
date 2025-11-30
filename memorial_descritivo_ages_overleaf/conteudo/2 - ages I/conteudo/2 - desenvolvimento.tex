@@ -1,0 +1,34 @@
+\section[Desenvolvimento do Projeto]{Desenvolvimento do Projeto}
+
+Nesta seção são apresentados os artefatos desenvolvidos ao longo do semestre no qual se situou o projeto. Também estão descritas as etapas realizadas para as entregas destes artefatos, bem como ilustrações e seus respectivos links para a wiki do projeto.
+
+\subsection{Repositório do Código Fonte do Projeto}
+Foi criado um único repositório, intitulado “Desastres”, que concentrava tanto o código-fonte quanto a documentação completa do projeto. A wiki do repositório continha instruções detalhadas sobre a execução do simulador, configuração do ambiente e explicações sobre o funcionamento interno do sistema.  
+O repositório pode ser acessado através do seguinte link:  
+\href{https://tools.ages.pucrs.br/desastres}{https://tools.ages.pucrs.br/desastres}.
+
+\subsection{Banco de Dados Utilizado}
+Como o simulador mantinha seu estado diretamente em memória e realizava leitura e escrita em arquivos locais, não houve necessidade de integração com um sistema de gerenciamento de banco de dados. Dessa forma, a persistência de informações era feita através de arquivos de configuração e logs, garantindo desempenho satisfatório e simplicidade para os testes realizados durante o desenvolvimento.
+
+\subsection{Arquitetura Utilizada}
+A arquitetura do sistema foi desenvolvida com base no modelo cliente-servidor. O servidor, responsável pela execução da simulação e pelo controle do ambiente, disponibilizava uma \ac{API} de comunicação com os agentes, que representavam os clientes. Como o objetivo principal do projeto era construir o núcleo do simulador, o foco do desenvolvimento concentrou-se inteiramente na implementação do servidor. A estrutura interna do simulador foi dividida em duas camadas principais:
+
+\begin{itemize}
+    \item \textbf{Camada de comunicação:} responsável por gerenciar o envio e o recebimento de informações entre os agentes e o servidor;
+    \item \textbf{Camada de simulação:} núcleo lógico do sistema, responsável pela geração de eventos, controle de estado e processamento das ações dos agentes.
+\end{itemize}
+
+Dentro da camada de simulação, dois módulos desempenhavam papéis específicos: o módulo \textit{IO}, responsável pela leitura e escrita de arquivos, e o módulo \textit{Core}, que continha a lógica principal da simulação. Essa divisão facilitou a manutenção e a evolução do código, garantindo uma separação clara entre as responsabilidades.
+
+O fluxo geral do sistema seguia o seguinte processo: os agentes se conectavam ao servidor, recebiam identificadores únicos e aguardavam o início da simulação. Após o registro de todos os agentes, o servidor iniciava a execução dos turnos, processando ações, atualizando estados e retornando as percepções aos agentes de forma cíclica. Essa estrutura refletia bem os princípios de um sistema multiagente distribuído e reforçou minha compreensão sobre interação entre entidades autônomas.
+
+\subsection{Protótipos das Telas Desenvolvidas}
+Como o foco do projeto estava voltado ao desenvolvimento de um simulador com \ac{CLI}, não foram criados protótipos gráficos ou interfaces visuais para aprovação dos stakeholders. O sistema operava inteiramente por meio de comandos e respostas textuais, o que simplificou a execução e o teste das funcionalidades durante as sprints.
+
+\subsection{Tecnologias Utilizadas}
+O desenvolvimento foi realizado utilizando a linguagem \textit{Python} \cite{python}, aplicando conceitos de orientação a objetos para representar agentes, eventos e entidades do ambiente de forma modular e reutilizável. Cada agente e evento era estruturado como uma classe, com atributos e métodos próprios para refletir seu comportamento no ambiente simulado.
+
+A comunicação entre o simulador e os agentes foi implementada através de uma \ac{API} \ac{REST}, construída com o framework \textit{Flask} \cite{flask}. Inicialmente, essa API era utilizada apenas para o registro dos agentes na simulação, mas foi posteriormente expandida para permitir trocas de informações mais complexas. Para possibilitar comunicação em tempo real, utilizou-se a extensão \textit{Flask-SocketIO}, que permitiu a troca bidirecional de mensagens via HTTP e WebSocket, garantindo sincronização durante os turnos da simulação.
+
+O cenário do simulador foi construído a partir de arquivos \ac{XML} exportados do \textit{OpenStreetMap}, contendo pontos de interesse e rotas reais, o que conferia ao ambiente características autênticas e dinâmicas. Essa integração foi fundamental para que os agentes pudessem se mover em um espaço realista, reconhecendo terrenos, estradas e regiões alagadas durante os testes.
+

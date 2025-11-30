@@ -1,0 +1,11 @@
+\subsection{Sprint 4}
+
+Ao iniciar a última sprint do projeto, a aplicação já se encontrava praticamente concluída em relação às funcionalidades previstas para entrega ao final do semestre. Dessa forma, o foco concentrou-se na finalização das funcionalidades em andamento e na melhoria de outras já implementadas, como a geração dos resultados dos testes vocacionais, o envio desses resultados por e-mail aos usuários e a funcionalidade de recuperação de senha.
+
+Com um número reduzido de atividades restantes, foi possível redistribuir as tarefas de forma mais equilibrada entre os membros do time. Assim, pude dedicar-me integralmente à configuração do processo de deploy da aplicação na \ac{AWS}, uma vez que as etapas básicas de conteinerização já haviam sido concluídas na sprint anterior.
+
+O primeiro passo consistiu na análise dos serviços necessários para a execução da aplicação em ambiente de computação em nuvem. Com o apoio do arquiteto de software da \ac{AGES}, escolhemos um serviço simples de configurar, mas capaz de atender a todos os requisitos técnicos do sistema. Optamos pela utilização de uma instância \ac{EC2} da \ac{AWS}, com recursos computacionais adequados para garantir o desempenho e a estabilidade da aplicação.
+
+A partir dessa definição, elaboramos o diagrama de deploy e iniciamos as configurações necessárias. O processo envolveu a configuração de rede da instância EC2, com IPs públicos e privados (realizada pelo arquiteto de software), o acesso remoto via \ac{SSH}, a clonagem dos repositórios do projeto e a execução manual dos containers Docker \cite{docker}. Essa abordagem foi escolhida devido ao tempo limitado disponível para a conclusão do projeto, garantindo que, mesmo com a execução manual das etapas, a aplicação permanecesse estável e acessível a qualquer usuário.
+
+Ao final da sprint, foi possível entregar todas as funcionalidades planejadas, bem como disponibilizar a aplicação completamente configurada e operacional no ambiente da \ac{AWS}. Observou-se também uma significativa melhora na organização e na comunicação entre os membros da equipe, o que resultou na conclusão do projeto antes mesmo do prazo final estabelecido.

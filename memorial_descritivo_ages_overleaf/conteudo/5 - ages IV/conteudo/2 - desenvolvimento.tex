@@ -1,0 +1,175 @@
+\section[Desenvolvimento do Projeto]{Desenvolvimento do Projeto}
+
+\subsection{Repositório do Código Fonte do Projeto}
+
+O código-fonte do \textit{Ai Produtor} está organizado em repositórios distintos para Front-End, Back-End e documentação, todos hospedados na plataforma de ferramentas da \ac{AGES}. Essa separação de responsabilidades favorece um ciclo de desenvolvimento organizado, facilita a manutenção e viabiliza expansões futuras do sistema. Os principais repositórios são:
+
+\begin{itemize}
+    \item \textbf{Wiki:} \href{https://tools.ages.pucrs.br/ai-produtor-sistema-de-cadastro-e-gestao-de-produtores-de-hortifrutie/aiprodutor-wiki/-/wikis/home}{https://tools.ages.pucrs.br/.../aiprodutor-wiki}
+    \item \textbf{Front-End:} \href{https://tools.ages.pucrs.br/ai-produtor-sistema-de-cadastro-e-gestao-de-produtores-de-hortifrutie/AiProdutor-frontend}{https://tools.ages.pucrs.br/.../AiProdutor-frontend}
+    \item \textbf{Back-End:} \href{https://tools.ages.pucrs.br/ai-produtor-sistema-de-cadastro-e-gestao-de-produtores-de-hortifrutie/aiprodutor-backend}{https://tools.ages.pucrs.br/.../aiprodutor-backend}
+\end{itemize}
+
+\subsection{Banco de Dados Utilizado}
+
+Para o armazenamento e a gestão das informações do \textit{Ai Produtor} utilizou-se o \ac{SGBD} relacional PostgreSQL \cite{postgresql}, estendido com a extensão PostGIS \cite{postgis} para suporte a dados geoespaciais — requisito essencial para o mapeamento de áreas de plantio. A modelagem lógica (Figura~\ref{fig:modelo-logico-aiprodutor}) define os relacionamentos necessários e dá suporte a operações com dados \ac{SQL} georreferenciados.
+
+\begin{figure}[htbp]
+    \centering
+    \small
+    \caption{Modelo lógico do banco de dados - Ai Produtor}
+    \includegraphics[width=1\linewidth]{conteudo//5 - ages IV//conteudo//figures/modelo-logico-aiprodutor.jpg}
+    Fonte: https://tools.ages.pucrs.br/ai-produtor-sistema-de-cadastro-e-gestao-de-produtores-de-hortifrutie/aiprodutor-wiki/-/wikis/banco\_dados
+    \label{fig:modelo-logico-aiprodutor}
+\end{figure}
+
+Essa abordagem segue boas práticas tipicamente encontradas em sistemas de informação geográfica e agricultura de precisão, que exigem integridade, escalabilidade e suporte para consultas espaciais eficientes. O PostgreSQL, de acordo com sua documentação oficial, oferece robustez, confiabilidade e uma comunidade ativa de suporte, além de documentação extensa que regula como utilizar índices, tipos de dados especiais e integrações geoespaciais via PostGIS.
+
+\subsection{Arquitetura Utilizada}
+
+A arquitetura do Front-End do Ai Produtor foi desenvolvida usando Next.js \cite{nextjs} com React, adotando uma estrutura componentizada que facilita a manutenção, o teste e a escalabilidade da interface. Cada componente é isolado em termos de UI, estados de loading e tratamento de erros, o que permite clareza no fluxo visual e modularidade para possíveis expansões. Essa escolha permite reaproveitamento de blocos visuais, facilita debug e prepara terreno para testes unitários ou de integração mais precisos.
+
+No Back-End, utilizou-se NestJS \cite{nestjs} sobre Node.js \cite{nodejs}, em um monólito modular orientado a domínios (por exemplo, \textit{producers}, \textit{areas}, \textit{harvests}). Cada domínio é implementado como um módulo com camadas explícitas — \textit{controller}, \textit{service} e \textit{repository} — e uso de \acp{DTO} com validação na borda. Essa organização promove \textit{Separation of Concerns}, manutenção facilitada, testabilidade e desenvolvimento paralelo. O esquema geral é apresentado na Figura~\ref{fig:arquitetura-backend-aiprodutor}.
+
+\begin{figure}[H]
+    \centering
+    \small
+    \caption{Arquitetura Back-End do projeto - Ai Produtor}
+    \includegraphics[width=1\linewidth]{conteudo//5 - ages IV//conteudo//figures/arquitetura-backend-aiprodutor.jpg}
+    Fonte: https://tools.ages.pucrs.br/ai-produtor-sistema-de-cadastro-e-gestao-de-produtores-de-hortifrutie/aiprodutor-wiki/-/wikis/arquitetura
+    \label{fig:arquitetura-backend-aiprodutor}
+\end{figure}
+
+Artigos e comunidades técnicas têm discutido as vantagens de arquiteturas moduladas com NestJS para monólitos limpos, escaláveis e bem organizados, ressaltando que essa abordagem possibilita crescimento do sistema com menor acoplamento e facilidade para evolução futura, sem os custos iniciais elevados de microsserviços.
+
+\subsection{Protótipos das Telas Desenvolvidas}
+
+Os protótipos de interface desenvolvidos no Figma \cite{figma} foram etapas essenciais do processo de design da aplicação, inseridos no ciclo iterativo de prototipação e validação com os stakeholders. Essa abordagem permitiu avaliar fluxos de navegação, validar requisitos de usabilidade e alinhar a concepção visual à identidade do projeto antes da implementação efetiva. Além disso, contribuiu para reduzir retrabalho e garantir uma visão compartilhada entre equipe técnica e clientes sobre a experiência do usuário.
+
+A tela inicial (Figura~\ref{fig:tela-home}) foi pensada para oferecer uma visão geral do sistema, funcionando como ponto de entrada para as demais funcionalidades.  
+O processo de cadastro e acompanhamento de plantios foi estruturado em diferentes etapas: a tela de Novo Plantio (Figura~\ref{fig:tela-novo-plantio}) facilita o registro inicial, enquanto o Painel de Controle de Safra (Figura~\ref{fig:tela-controle-safra}) centraliza informações de monitoramento e produtividade.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.30\textwidth}
+        \centering
+        \captionof{figure}{Tela Home - Ai Produtor}
+        \includegraphics[width=\linewidth]{conteudo//5 - ages IV//conteudo//figures/tela-home.jpg}
+        \label{fig:tela-home}
+    \end{minipage}
+
+    \vspace{2mm}
+    Fonte: https://tools.ages.pucrs.br/ai-produtor-sistema-de-cadastro-e-gestao-de-produtores-de-hortifrutie/aiprodutor-wiki/-/wikis/mockups
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+
+  \begin{minipage}[t]{0.45\textwidth}
+    \centering
+    \captionof{figure}{Tela de Novo Plantio - Ai Produtor}
+    \includegraphics[width=\linewidth]{conteudo//5 - ages IV//conteudo//figures/tela-novo-plantio.jpg}
+    \label{fig:tela-novo-plantio}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.45\textwidth}
+    \centering
+    \captionof{figure}{Painel de Controle de Safra - Ai Produtor}
+    \includegraphics[width=\linewidth]{conteudo//5 - ages IV//conteudo//figures/tela-controle-safra.jpg}
+    \label{fig:tela-controle-safra}
+  \end{minipage}
+
+  \vspace{2mm}
+  Fonte: https://tools.ages.pucrs.br/ai-produtor-sistema-de-cadastro-e-gestao-de-produtores-de-hortifrutie/aiprodutor-wiki/-/wikis/mockups
+\end{figure}
+
+Outras telas complementam esse fluxo, como a lista consolidada de safras (Figura~\ref{fig:tela-lista-controle-safra}) e o Histórico de Safras (Figura~\ref{fig:tela-historico}), que permitem a rastreabilidade de ciclos anteriores. A interface também contempla a edição (Figura~\ref{fig:tela-editar-safras}) e a listagem de safras (Figura~\ref{fig:tela-listar-safras}), oferecendo flexibilidade no gerenciamento.
+
+\begin{figure}[H]
+  \centering
+
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \captionof{figure}{Lista de Safras no Painel de Controle - Ai Produtor}
+    \includegraphics[width=\linewidth]{conteudo//5 - ages IV//conteudo//figures/tela-lista-controle-safra.jpg}
+    \label{fig:tela-lista-controle-safra}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \captionof{figure}{Histórico de Safras - Ai Produtor}
+    \includegraphics[width=\linewidth]{conteudo//5 - ages IV//conteudo//figures/tela-historico.jpg}
+    \label{fig:tela-historico}
+  \end{minipage}
+
+  \vspace{2mm}
+  Fonte: https://tools.ages.pucrs.br/ai-produtor-sistema-de-cadastro-e-gestao-de-produtores-de-hortifrutie/aiprodutor-wiki/-/wikis/mockups
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \captionof{figure}{Tela de Edição de Safra - Ai Produtor}
+    \includegraphics[width=\linewidth]{conteudo//5 - ages IV//conteudo//figures/tela-editar-safras.jpg}
+    \label{fig:tela-editar-safras}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \captionof{figure}{Tela de Listagem de Safras - Ai Produtor}
+    \includegraphics[width=\linewidth]{conteudo//5 - ages IV//conteudo//figures/tela-listar-safras.jpg}
+    \label{fig:tela-listar-safras}
+  \end{minipage}
+
+  \vspace{2mm}
+  Fonte: https://tools.ages.pucrs.br/ai-produtor-sistema-de-cadastro-e-gestao-de-produtores-de-hortifrutie/aiprodutor-wiki/-/wikis/mockups
+\end{figure}
+
+Complementando a experiência do usuário, as telas de Criação de Safra (Figura~\ref{fig:tela-criar-safras}) e Desenho de Área (Figura~\ref{fig:tela-desenho-area}) permitem representar graficamente as áreas de plantio com o apoio de dados geoespaciais, além de armazenarem informações importantes sobre o tamanho das áreas e sua localização, facilitando a navegação do usuário. A listagem de áreas (Figura~\ref{fig:tela-listagem-areas}) e o cadastro de produtores (Figura~\ref{fig:tela-cadastro-produtor}) reforçam a rastreabilidade entre produtores, áreas e safras.
+
+Esses protótipos, no conjunto, demonstram a preocupação do time em oferecer uma interface intuitiva, escalável e aderente às necessidades de gestão agrícola. Eles serviram como guia visual e funcional para os desenvolvedores, além de instrumento de comunicação entre equipe e stakeholders durante todo o ciclo de desenvolvimento.
+
+\begin{figure}[H]
+  \centering
+
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \captionof{figure}{Tela de Criação de Safra - Ai Produtor}
+    \includegraphics[width=\linewidth]{conteudo//5 - ages IV//conteudo//figures/tela-criar-safras.jpg}
+    \label{fig:tela-criar-safras}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \captionof{figure}{Tela de Desenho de Área de Plantio - Ai Produtor}
+    \includegraphics[width=\linewidth]{conteudo//5 - ages IV//conteudo//figures/tela-desenho-area.jpg}
+    \label{fig:tela-desenho-area}
+  \end{minipage}
+
+  \vspace{2mm}
+  Fonte: https://tools.ages.pucrs.br/ai-produtor-sistema-de-cadastro-e-gestao-de-produtores-de-hortifrutie/aiprodutor-wiki/-/wikis/mockups
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \captionof{figure}{Tela de Listagem de Áreas de Plantio - Ai Produtor}
+    \includegraphics[width=\linewidth]{conteudo//5 - ages IV//conteudo//figures/tela-listagem-areas.jpg}
+    \label{fig:tela-listagem-areas}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \captionof{figure}{Tela de Cadastro de Produtor - Ai Produtor}
+    \includegraphics[width=\linewidth]{conteudo//5 - ages IV//conteudo//figures/tela-cadastro-produtor.jpg}
+    \label{fig:tela-cadastro-produtor}
+  \end{minipage}
+
+  \vspace{2mm}
+  Fonte: https://tools.ages.pucrs.br/ai-produtor-sistema-de-cadastro-e-gestao-de-produtores-de-hortifrutie/aiprodutor-wiki/-/wikis/mockups
+\end{figure}
+
+\subsection{Tecnologias Utilizadas}
+
+O projeto Ai Produtor faz uso de um conjunto de tecnologias modernas tanto para o Back-End quanto para o Front-End, a fim de garantir qualidade, desempenho, manutenção e produtividade da equipe. No Back-End, utiliza-se o framework NestJS \cite{nestjs} com TypeScript \cite{typescript}, que entrega tipagem estática e modularidade ao código; Prisma como ORM para abstração de persistência e mapeamento objeto-relacional; PostgreSQL \cite{postgresql} com extensão PostGIS\cite{postgis} para lidar com dados geoespaciais; Docker \cite{docker} para containerização dos ambientes de desenvolvimento e produção; Swagger \cite{swagger} para documentação automática da API; Passport.js para autenticação via \ac{JWT}; além de ferramentas para padronização de estilo de código como ESLint e Prettier; e  GitLab \cite{gitlab} para versionamento, Wiki e integração contínua (CI/CD). No Front-End, destacam-se Next.js, para roteamento e renderização, React \cite{reactjs} como biblioteca de interface de usuário, Axios \cite{axios} para consumo das APIs, Tailwind CSS \cite{tailwind} para estilo utilitário customizado, além de uso de Docker \cite{docker}, ESLint \cite{eslint}, e o uso do GitLab para versionamento, documentação e pipelines de \ac{CI/CD}.
+
+A adoção dessas tecnologias se apoia em princípios de engenharia de software como modularidade, separação de responsabilidades, testabilidade e manutenção de código limpo, conforme discutido em literatura recente sobre desenvolvimento web moderno.

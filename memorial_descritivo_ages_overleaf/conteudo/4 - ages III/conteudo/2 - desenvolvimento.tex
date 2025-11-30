@@ -1,0 +1,133 @@
+\section[Desenvolvimento do Projeto]{Desenvolvimento do Projeto}
+
+Nesta seção são apresentados os principais artefatos desenvolvidos ao longo do semestre de execução do projeto \textit{Polymathech}. São descritas as etapas realizadas para as entregas, acompanhadas de ilustrações e links para a Wiki do projeto, onde é possível consultar informações mais detalhadas sobre cada item.
+
+\subsection{Repositório do Código Fonte do Projeto}
+
+O código-fonte do projeto \textit{Polymathech} foi organizado em dois repositórios principais, sendo um destinado ao módulo Back-End, responsável pela \ac{API} da aplicação, e outro ao módulo Front-End, responsável pela \ac{UI}. Além disso, a Wiki do projeto contém informações adicionais sobre a estrutura, dependências e procedimentos de configuração utilizados. Os repositórios podem ser acessados nos links abaixo:
+
+\begin{itemize}
+    \item https://tools.ages.pucrs.br/polymathech/polymathech-backend
+    \item https://tools.ages.pucrs.br/polymathech/polymathech-frontend
+    \item https://tools.ages.pucrs.br/polymathech/wiki
+\end{itemize}
+
+\subsection{Banco de Dados Utilizado}
+
+Neste projeto, optamos por utilizar uma estrutura de banco de dados relacional \ac{SQL}, pois foi identificado entre os membros da equipe de desenvolvimento que esse tipo de estrutura seria mais adequado ao gerenciamento dos dados que precisariam ser relacionados na aplicação. Foram levantados os requisitos necessários para o desenvolvimento da estrutura de dados da aplicação e, assim, foi possível realizar a modelagem \ac{ER}, como indicado na Figura~\ref{fig:modelo-er-polimathech}, e a modelagem lógica, indicada na Figura~\ref{fig:modelo-logico-polimathech}. As informações sobre a modelagem do banco de dados e sobre sua implementação podem ser acessadas pelo seguinte link:
+
+\begin{itemize}
+    \item https://tools.ages.pucrs.br/polymathech/wiki/-/wikis/Banco\%20de\%20Dados
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \small
+    \caption{Modelo ER do banco de dados - Polymathech}
+    \includegraphics[width=1\linewidth]{conteudo//4 - ages III//conteudo//figures/modelo-er-polymathech.jpg}
+    Fonte: https://tools.ages.pucrs.br/polymathech/wiki/-/wikis/Banco\%20de\%20Dados
+    \label{fig:modelo-er-polimathech}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \small
+    \caption{Modelo Lógico do banco de dados - Polymathech}
+    \includegraphics[width=1\linewidth]{conteudo//4 - ages III//conteudo//figures/modelo-logico-polymathech.jpg}
+    Fonte: https://tools.ages.pucrs.br/polymathech/wiki/-/wikis/Banco\%20de\%20Dados
+    \label{fig:modelo-logico-polimathech}
+\end{figure}
+
+\subsection{Arquitetura Utilizada}
+
+A arquitetura do projeto foi definida de forma a garantir modularidade, escalabilidade e facilidade de manutenção. Foram estruturados três componentes principais: o módulo Front-End, o módulo Back-End e o processo de deploy na \ac{AWS}.  
+
+No módulo Front-End, adotou-se uma organização baseada em componentização e páginas, seguindo boas práticas de desenvolvimento com React. Já o Back-End foi estruturado em camadas, conforme os princípios da \textit{Clean Architecture} \cite{martin2017clean} e do \ac{DDD}, a fim de separar regras de negócio, lógica de infraestrutura e controladores da aplicação. O deploy foi realizado manualmente na \ac{AWS}, por meio da configuração de uma instância \ac{EC2}. A aplicação foi implantada em containers Docker \cite{docker}, configurados via \ac{CLI} e \ac{SSH}, conforme ilustrado na Figura~\ref{fig:arquitetura-aws-polimathech}. Essas decisões foram tomadas considerando a complexidade do sistema e o tempo disponível para desenvolvimento. As informações completas sobre a arquitetura estão disponíveis na Wiki do projeto:
+
+\begin{itemize}
+    \item https://tools.ages.pucrs.br/polymathech/wiki/-/wikis/arquitetura
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \small
+    \caption{Arquitetura de deploy da aplicação na AWS - Polymathech}
+    \includegraphics[width=1\linewidth]{conteudo//4 - ages III//conteudo//figures/arquitetura-aws-polymathech.jpg}
+    Fonte: https://tools.ages.pucrs.br/polymathech/wiki/-/wikis/arquitetura
+    \label{fig:arquitetura-aws-polimathech}
+\end{figure}
+
+\subsection{Protótipos das Telas Desenvolvidas}
+
+No projeto \textit{Polymathech}, optou-se por iniciar diretamente o desenvolvimento dos protótipos em alto nível. Essa decisão surgiu a partir de discussões entre os stakeholders e a equipe de desenvolvimento, que definiram como diretriz a adoção de um padrão visual semelhante ao de outras aplicações web existentes. A partir desse ponto, foram elaboradas as telas e fluxos da aplicação com base em referências modernas, adicionando funcionalidades específicas do projeto e um design próprio, atrativo e acessível.  
+
+Os principais protótipos, que representam as etapas de interação do usuário, estão apresentados nas Figuras~\ref{fig:tela-inicial-polimathech} a~\ref{fig:tela-resultados-polimathech}. As versões completas podem ser consultadas na Wiki do projeto ou no Apêndice A deste relatório:
+
+
+\begin{itemize}
+    \item https://tools.ages.pucrs.br/polymathech/wiki/-/wikis/design\_mockups
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \small
+    \caption{Tela inicial - Polymathech}
+    \includegraphics[width=1\linewidth]{conteudo//4 - ages III//conteudo//figures/tela-inicial-polymathech.jpg}
+    Fonte: https://tools.ages.pucrs.br/polymathech/wiki/-/wikis/design\_mockups
+    \label{fig:tela-inicial-polimathech}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \small
+    \caption{Tela de login - Polymathech}
+    \includegraphics[width=1\linewidth]{conteudo//4 - ages III//conteudo//figures/tela-login-polymathech.jpg}
+    Fonte: https://tools.ages.pucrs.br/polymathech/wiki/-/wikis/design\_mockups
+    \label{fig:tela-login-polimathech}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \small
+    \caption{Tela de cadastro - Polymathech}
+    \includegraphics[width=1\linewidth]{conteudo//4 - ages III//conteudo//figures/tela-cadastro-polymathech.jpg}
+    Fonte: https://tools.ages.pucrs.br/polymathech/wiki/-/wikis/design\_mockups
+    \label{fig:tela-cadastro-polimathech}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \small
+    \caption{Tela home - Polymathech}
+    \includegraphics[width=1\linewidth]{conteudo//4 - ages III//conteudo//figures/tela-home-polymathech.jpg}
+    Fonte: https://tools.ages.pucrs.br/polymathech/wiki/-/wikis/design\_mockups
+    \label{fig:tela-home-polimathech}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \small
+    \caption{Tela de teste vocacional - Polymathech}
+    \includegraphics[width=1\linewidth]{conteudo//4 - ages III//conteudo//figures/tela-teste-vocacional-polymathech.jpg}
+    Fonte: https://tools.ages.pucrs.br/polymathech/wiki/-/wikis/design\_mockups
+    \label{fig:tela-teste-vocacional-polimathech}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \small
+    \caption{Tela de resultados do teste vocacional - Polymathech}
+    \includegraphics[width=1\linewidth]{conteudo//4 - ages III//conteudo//figures/tela-resultados-polymathech.jpg}
+    Fonte: https://tools.ages.pucrs.br/polymathech/wiki/-/wikis/design\_mockups
+    \label{fig:tela-resultados-polimathech}
+\end{figure}
+
+\subsection{Tecnologias Utilizadas}
+
+As tecnologias utilizadas no projeto foram selecionadas de modo a otimizar o processo de desenvolvimento, reduzir a curva de aprendizado e garantir um ambiente seguro e bem estruturado.  
+
+No módulo Front-End, foi utilizado o framework ReactJS \cite{reactjs}, em conjunto com a linguagem TypeScript \cite{typescript}, devido à ampla documentação, suporte da comunidade e facilidade de componentização. Para o módulo Back-End, adotou-se o framework NestJS \cite{nestjs}, também desenvolvido em TypeScript, por ser uma ferramenta opinativa que favorece a organização do código e a aplicação de boas práticas arquiteturais.  
+
+O banco de dados escolhido foi o PostgreSQL \cite{postgresql}, por sua robustez, confiabilidade e custo computacional reduzido. A camada de acesso e manipulação de dados foi implementada utilizando o Prisma ORM, que facilitou o controle de versões do esquema, a execução de migrações e a realização de consultas de forma tipada e eficiente.
+
+
